@@ -1,8 +1,9 @@
-import heapq
+import heapq #Heap Queue for prioty queue operations 
 import os
 from collections import defaultdict
 from bitarray import bitarray
 
+#step 1: define Huffman Node
 class HuffmanNode:
     def __init__(self, char, freq):
         self.char = char
@@ -13,6 +14,7 @@ class HuffmanNode:
     def __lt__(self, other):
         return self.freq < other.freq
 
+#step2: Build BUffman Tree  
 def build_huffman_tree(frequencies):
     heap = [HuffmanNode(char, freq) for char, freq in frequencies.items()]
     heapq.heapify(heap)
@@ -27,14 +29,16 @@ def build_huffman_tree(frequencies):
     
     return heap[0]
 
+#step 3: Generate Huffman codes 
 def generate_huffman_codes(node, prefix="", code_map={}):
     if node:
         if node.char is not None:
             code_map[node.char] = prefix
-        generate_huffman_codes(node.left, prefix + "0", code_map)
-        generate_huffman_codes(node.right, prefix + "1", code_map)
+        generate_huffman_codes(node.left, prefix + "0", code_map) #left child(0)
+        generate_huffman_codes(node.right, prefix + "1", code_map) #right child(1)
     return code_map
 
+#Step 4: Compress file and huffman code
 def compress_file(input_path):
     with open(input_path, 'r', encoding='utf-8') as file:
         text = file.read()
@@ -56,6 +60,7 @@ def compress_file(input_path):
     
     return compressed_path, huffman_codes
 
+#Step 5: Decode file with huffman code and compressed path
 def decompress_file(compressed_path, huffman_codes, output_path):
     reverse_codes = {v: k for k, v in huffman_codes.items()}
     
