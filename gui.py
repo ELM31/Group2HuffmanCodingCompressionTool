@@ -46,20 +46,43 @@ def launch_gui():
     
     root = tk.Tk()
     root.title("Huffman Coding Compression Tool")
+    root.configure(bg = '#140042')
 
-    select_button = tk.Button(root, text="Select Text File", command=select_file)
+    select_button = tk.Button(root, 
+                              text="Select Text File", 
+                              command=select_file,
+                              fg='#c1bec8',
+                              bg='#200067',
+                              font=("Fixedsys", 17))
     select_button.pack()
 
-    result_label = tk.Label(root, text="Compression details will appear here.", fg="blue")
+    result_label = tk.Label(root,
+                             text="Compression details will appear here.",
+                             fg="#b550b2",
+                             bg='#200067',
+                             font=("Fixedsys", 2))
     result_label.pack()
 
-    huffman_codes_text = tk.Text(root, height=10, width=50)
+    huffman_codes_text = tk.Text(root, 
+                                 height=10, 
+                                 width=50,
+                                 fg = "#c1bec8",
+                                 bg="#3b3b3b")
     huffman_codes_text.pack()
 
-    decompress_button = tk.Button(root, text="Decompress File", command=decompress_and_display)
+    decompress_button = tk.Button(root, 
+                                  text="Decompress File", 
+                                  command=decompress_and_display,
+                                  fg="#c1bec8",
+                                  bg="#200067",
+                                  font=("Fixedsys", 17))
     decompress_button.pack()
 
-    decoded_text_display = tk.Text(root, height=5, width=50)
+    decoded_text_display = tk.Text(root, 
+                                   height=10, 
+                                   width=50, 
+                                   fg = '#c1bec8',
+                                   bg="#3b3b3b")
     decoded_text_display.pack()
 
     root.mainloop()
