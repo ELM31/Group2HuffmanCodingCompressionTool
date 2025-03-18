@@ -2,6 +2,7 @@ import tkinter as tk                                #tkinter library for GUI
 from tkinter import filedialog, messagebox          #Import filedialog to allow users to interact with their file system, message box for displaying separate message boxes
 import os                                           #Operating System library used to help get size of files
 from huffman import compress_file, decompress_file  #Needed functions from huffman python file 
+import WindowSet                                    #Sets tool window dimensions off of current screen
 
 stored_huffman_codes = None
 stored_compressed_path = None
@@ -60,6 +61,9 @@ def launch_gui():
     root.title("Huffman Coding Compression Tool")
     root.configure(bg = '#140042')
 
+    WindowSet.setScreen(root, wRatio = 0.4, hRatio = 0.5) # Dynamically sets window size for program
+    root.configure(bg='#140042')
+
     #Widget properties for the Select button 
     select_button = tk.Button(root, 
                               text="Select Text File", 
@@ -89,7 +93,7 @@ def launch_gui():
     #Widget properties for the Huffman code textbox 
     huffman_codes_text = tk.Text(root, 
                                  height=10, 
-                                 width=50,
+                                 width=70,
                                  fg = "#c1bec8",
                                  bg="#585858")
     huffman_codes_text.pack()
@@ -114,7 +118,7 @@ def launch_gui():
     #Widget properties for the decoded textbox 
     decoded_text_display = tk.Text(root, 
                                    height=10, 
-                                   width=50, 
+                                   width=70, 
                                    fg = '#c1bec8',
                                    bg="#585858")
     decoded_text_display.pack()
