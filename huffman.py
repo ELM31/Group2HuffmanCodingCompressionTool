@@ -54,7 +54,8 @@ def compress_file(input_path):
     for char in text:
         encoded_text.extend(huffman_codes[char])
     
-    compressed_path = input_path + ".bin"
+    #compressed_path = input_path + ".bin"
+    compressed_path = "compressed.bin"
     with open(compressed_path, 'wb') as file:
         file.write(encoded_text.tobytes())
     
